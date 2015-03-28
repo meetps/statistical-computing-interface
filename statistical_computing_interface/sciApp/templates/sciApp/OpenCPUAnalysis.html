@@ -1,0 +1,37 @@
+<!DOCTYPE HTML><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Graphs</title>
+</head>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<body>
+
+  <h1 align="center">OpenCPU Analysis</h1>
+
+<div align="center" id="container" class="container" style="max-width: 700px; height: 400px; margin: 0 auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Mean of X values</th>
+        <th>Mean of Y values</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    <tr class="info">
+    {% for attr in attributes %}
+        <td>{{ attr }}</td>
+    {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

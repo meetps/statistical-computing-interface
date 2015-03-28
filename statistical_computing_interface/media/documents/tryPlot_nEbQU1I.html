@@ -1,0 +1,45 @@
+<!DOCTYPE HTML><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Graphs</title>
+</head>
+
+<body>
+
+    <h1 align="center">Statistics</h1>
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>   
+
+
+
+ <!--Note here the datas has been hardcoded. Now we have to recieve the json dumped data and use it here to plot-->    
+    <script type="text/javascript">
+    var x = '{{ obj_as_json|safe}}';
+    var obj = JSON.parse(x);
+    <!--window.alert(x);-->
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Professor'
+                },
+                xAxis: {
+                    categories: ['AP','AA','AB','BB','BC','CC','FR']
+                },
+                credits: {
+                    enabled: false
+                },
+                series: obj
+            });
+        });    
+    </script>
+
+</body>
+</html>

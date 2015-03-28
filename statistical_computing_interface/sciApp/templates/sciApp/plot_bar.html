@@ -1,0 +1,92 @@
+<!DOCTYPE HTML><html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Graphs</title>
+</head>
+
+<body>
+
+    <h1 align="center">Statistics</h1>
+    <div id="container" style="max-width: 700px; height: 400px; margin: 0 auto"></div>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript">
+    var x = '{{ obj_as_json|safe}}';
+    var obj = JSON.parse(x);
+    //window.alert(x);
+    //window.alert(obj[0].data);
+    k=Object.keys(obj).length
+    var myArray1 = new Array()
+    var myArray2 = new Array()
+    for (var i = 0; i < k; i++) {
+    myArray1.push(obj[i].data);
+    myArray2.push(obj[i].name);
+    }
+    var obj1=[{"name": 'xValues',"data": myArray2}]
+    //window.alert(obj1[0].data);
+    //window.alert(myArray1);
+    //window.alert(obj);
+//this funtion is for bar chart
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Bar chart of the input data'
+        },
+        subtitle: {
+            text: null
+        },
+        xAxis: {
+            categories: myArray1,
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: null,
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: null
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: obj1
+    });
+});
+
+    </script>
+
+</body>
+</html>

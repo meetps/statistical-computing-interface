@@ -74,7 +74,7 @@ def registerStatus(request):
 	return HttpResponseRedirect('/sciApp/register/')
 
 def readData():
-	completeName=os.path.join('statistical_computing_interface/media/documents/', 'a.csv')
+	completeName=os.path.join('statistical_computing_interface/media/documents/', 'uploaded.csv')
 	d=[]
 	f = open( completeName, 'r' )
 	#data is assumed in the form of x and y values which are seperated by comma.
